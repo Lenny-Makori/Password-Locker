@@ -92,8 +92,18 @@ class TestAccount(unittest.TestCase):
         
         self.assertEqual(Credentials.display_accounts(), Credentials.accounts_list)
 
+# if __name__ == "__main__":
+#     unittest.main()
+
+    def test_delete_account(self):
+        self.new_existing_account = Credentials("twitter", "lennymakori1", "makorimakori28")
+        self.new_account = Credentials("instagram", "makorilenny1", "28lennylenny")
+        self.new_existing_account.save_account()
+        self.new_account.save_account()
+
+        Credentials.delete_account("twitter")
+
+        self.assertEqual(len(Credentials.accounts_list), 1)
+
 if __name__ == "__main__":
     unittest.main()
-
-
-        

@@ -16,6 +16,12 @@ class Credentials:
     def  display_accounts(cls):
         return cls.accounts_list
 
+    @classmethod
+    def delete_account(cls, password_for):
+        for account in cls.accounts_list:
+            if account.password_for == password_for:
+                cls.accounts_list.remove(account)
+
 
     def __init__(self, password_for, username, password):
 
