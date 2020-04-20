@@ -59,6 +59,17 @@ class TestAccount(unittest.TestCase):
 #     unittest.main()
 
 
+    def test_multiple_accounts(self):
+        self.new_existing_account = Credentials("twitter", "lennymakori1", "makorimakori28")
+        self.new_account = Credentials("instagram", "makorilenny1", "28lennylenny")
+        self.new_existing_account.save_account()
+        self.new_account.save_account()
+
+        self.assertEqual(len(Credentials.accounts_list), 2)
+
+# if __name__ == "__main__":
+#     unittest.main()
+
     
 
 if __name__ == "__main__":
