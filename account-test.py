@@ -38,8 +38,18 @@ class TestAccount(unittest.TestCase):
 #     unittest.main()
 
 
-    
+    def test_add_new_account(self):
+        self.new_account = Credentials("instagram", "makorilenny1", "28lennylenny")
 
+        self.assertEqual(self.new_account.password_for, "instagram")
+        self.assertEqual(self.new_account.username, "makorilenny1")
+        self.assertEqual(self.new_account.password, "28lennylenny")
+
+# if __name__ == "__main__":
+#     unittest.main()
+
+
+    
 if __name__ == "__main__":
     unittest.main()
 
