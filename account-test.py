@@ -1,6 +1,7 @@
 from user import User
 from credentials import Credentials
 import unittest
+import pyperclip
 
 
 class TestAccount(unittest.TestCase):
@@ -70,9 +71,25 @@ class TestAccount(unittest.TestCase):
 # if __name__ == "__main__":
 #     unittest.main()
 
-    
+    def test_generate_password(self):
+        self.new_existing_account = Credentials("twitter", "lennymakori1", "makorimakori28")
+        self.new_account = Credentials("instagram", "makorilenny1", "28lennylenny")
+        self.new_existing_account.save_account()
+        self.new_account.save_account()
+
+        Credentials.generate_password_for("makorilenny1")
+
+        self.assertEqual(self.new_account.password, pyperclip.paste())
+
+# if __name__ == "__main__":
+#     unittest.main()
+
+    def test_view_accounts(self):
+        
+        self.assertEqual(Credentials.display_accounts(), Credentials.accounts_list)
 
 if __name__ == "__main__":
     unittest.main()
+
 
         
