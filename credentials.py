@@ -12,6 +12,10 @@ class Credentials:
             if account.username == username:
                 pyperclip.copy(account.password)
 
+    @classmethod
+    def  display_accounts(cls):
+        return cls.accounts_list
+
 
     def __init__(self, password_for, username, password):
 

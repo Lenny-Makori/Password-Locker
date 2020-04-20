@@ -85,6 +85,10 @@ class TestAccount(unittest.TestCase):
 #     unittest.main()
 
     def test_view_accounts(self):
+        self.new_existing_account = Credentials("twitter", "lennymakori1", "makorimakori28")
+        self.new_account = Credentials("instagram", "makorilenny1", "28lennylenny")
+        self.new_existing_account.save_account()
+        self.new_account.save_account()
         
         self.assertEqual(Credentials.display_accounts(), Credentials.accounts_list)
 
