@@ -27,7 +27,19 @@ class TestAccount(unittest.TestCase):
 #     unittest.main()
 
 
+    def test_add_existing_account(self):
+        self.new_existing_account = Credentials("twitter", "lennymakori1", "makorimakori28")
+
+        self.assertEqual(self.new_existing_account.password_for, "twitter")
+        self.assertEqual(self.new_existing_account.username, "lennymakori1")
+        self.assertEqual(self.new_existing_account.password, "makorimakori28")
+
+# if __name__ == "__main__":
+#     unittest.main()
+
+
     
+
 if __name__ == "__main__":
     unittest.main()
 
