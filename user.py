@@ -3,10 +3,16 @@ class User:
     users_list = []
 
     def save_user(self):
+        """
+        method to save user profile credentials
+        """
         User.users_list.append(self)
 
     @classmethod
     def find_password_for(cls, fname):
+        """
+        method to return password for a registered user
+        """
         for user in cls.users_list:
             if user.user_first_name == fname:
                 return user.login_password
