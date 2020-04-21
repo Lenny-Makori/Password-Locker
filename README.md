@@ -22,6 +22,7 @@ The program is not able to log out of the Password-Locker account without exitin
 | Display accounts | The user can choose to view all the added accounts | All the added accounts get displayed for the user. |
 | Delete an account | The user can choose to delete an account and is prompted to enter the name of the account to be deleted. | The account gets deleted from the program.|
 | Exit the program | The user can choose to exit the program. | The program gets closed. |
+|||
 
 ## Technologies Used
 This page was created using: 
