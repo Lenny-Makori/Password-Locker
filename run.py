@@ -94,7 +94,7 @@ def main():
                 if logpassword == logpassword2:
                     save_user_login(user_login(fname, lname, logpassword))
                     print('\n')
-                    print(f"{fname}, you have successfully created your Password Locker account has been created! Look around and see what you can do to you account!")
+                    print(f"{fname}, your Password Locker account has been created! Look around and see what you can do to you account!")
                     print('\n')
 
         elif response == "yes":
