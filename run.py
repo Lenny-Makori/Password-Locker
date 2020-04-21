@@ -1,3 +1,4 @@
+#!/usr/bin/env python3.6
 import pyperclip
 from credentials import Credentials
 from user import User
@@ -40,70 +41,60 @@ def main():
     response = input().lower()
     print('\n')
 
-    if response == 'no':
-        print("Create your account here:")
-        print("First Name:")
-        fname = input()
-        print("Last Name:")
-        lname = input()
-        print("Enter new password:")
-        logpassword = input()
-        print("Confirm password:")
-        logpassword2 = input()
+    while True:
 
-        if logpassword == logpassword2:
-            save_user_login(user_login(fname, lname, logpassword))
-            print(f"{fname}, you have successfully created your Password Locker account has been created! Look around and see what you can do to you account!")
-
-        else:
-            print("Incorrect password confirmation. Kindly enter your password again")
+        if response == 'no':
+            print("Create your account here:")
+            print("First Name:")
+            fname = input()
+            print("Last Name:")
+            lname = input()
             print("Enter new password:")
             logpassword = input()
             print("Confirm password:")
             logpassword2 = input()
+
             if logpassword == logpassword2:
                 save_user_login(user_login(fname, lname, logpassword))
-                print('\n')
                 print(f"{fname}, you have successfully created your Password Locker account has been created! Look around and see what you can do to you account!")
-                print('\n')
 
-        while True:
-            print('\n')
-            print("="*50)
-            print("What would you like to do? Reply with the following short codes. ea - add an existing account, na - add a new account, da - display all accounts, dl - delete an account")
-            short_code = input().lower()
-
-            if short_code == "ea":
-                print("please fill in the details below.")
-                print("Account name:")
-                account_name = input().lower()
-                print("Username:")
-                user_name = input()
-                print("Enter password:")
-                user_password = input()
-
-                save_account(add_existing_account(account_name, user_name, user_password))
-                print('\n')
-                print(f"Your {account_name} account has been added.")
-
-            elif short_code == "na":
-                print("please fill in the details below.")
-                print("Account name:")
-                account_name = input().lower()
-                print("Username:")
-                user_name = input()
-                print("Enter password:")
-                user_password = input()
+            else:
+                print("Incorrect password confirmation. Kindly enter your password again")
+                print("Enter new password:")
+                logpassword = input()
                 print("Confirm password:")
-                user_password2 = input()
+                logpassword2 = input()
+                if logpassword == logpassword2:
+                    save_user_login(user_login(fname, lname, logpassword))
+                    print('\n')
+                    print(f"{fname}, you have successfully created your Password Locker account has been created! Look around and see what you can do to you account!")
+                    print('\n')
 
-                if user_password == user_password2:
+            while True:
+                print('\n')
+                print("="*50)
+                print("What would you like to do? Reply with the following short codes. ea - add an existing account, na - add a new account, da - display all accounts, dl - delete an account")
+                short_code = input().lower()
+
+                if short_code == "ea":
+                    print("please fill in the details below.")
+                    print("Account name:")
+                    account_name = input().lower()
+                    print("Username:")
+                    user_name = input()
+                    print("Enter password:")
+                    user_password = input()
+
                     save_account(add_existing_account(account_name, user_name, user_password))
                     print('\n')
                     print(f"Your {account_name} account has been added.")
 
-                else:
-                    print("Invalid password confirmation. Kindly enter your password again")
+                elif short_code == "na":
+                    print("please fill in the details below.")
+                    print("Account name:")
+                    account_name = input().lower()
+                    print("Username:")
+                    user_name = input()
                     print("Enter password:")
                     user_password = input()
                     print("Confirm password:")
@@ -114,57 +105,71 @@ def main():
                         print('\n')
                         print(f"Your {account_name} account has been added.")
 
-            elif short_code == "da":
-                if view_accounts():
-                    print("Here is a list of all your contacts")
-                    print ('\n')
+                    else:
+                        print("Invalid password confirmation. Kindly enter your password again")
+                        print("Enter password:")
+                        user_password = input()
+                        print("Confirm password:")
+                        user_password2 = input()
 
-                    for account in view_accounts():
-                        print(f" ACCOUNT:=> {account.password_for} || Username: => {account.username} || Password: => {account.password}")
-                        print('-'*10)
+                        if user_password == user_password2:
+                            save_account(add_existing_account(account_name, user_name, user_password))
+                            print('\n')
+                            print(f"Your {account_name} account has been added.")
+
+                elif short_code == "da":
+                    if view_accounts():
+                        print("Here is a list of all your contacts")
+                        print ('\n')
+
+                        for account in view_accounts():
+                            print(f" ACCOUNT:=> {account.password_for} || Username: => {account.username} || Password: => {account.password}")
+                            print('-'*10)
+
+                    else:
+                        print ('\n')
+                        print("You don't seem to have any accounts yet")
+                        print('\n')
+
+                elif short_code == "dl":
+                    print("Enter the name of the account that you want to delete:")
+                    account_name = input().lower()
+                    delete_account(account_name)
+                    print('\n')
+                    print(f"Your {account_name} account has been deleted")
+
+                elif short_code == "ex":
+                    print('\n')
+                    print(f"******Bye {fname}******")
+                    print('\n')
+                    break
 
                 else:
-                    print ('\n')
-                    print("You don't seem to have any accounts yet")
-                    print('\n')
+                    print("I really didn't get that, kindly use the short codes")
 
-            elif short_code == "dl":
-                print("Enter the name of the account that you want to delete:")
-                account_name = input().lower()
-                delete_account(account_name)
+
+        elif response == "yes":
+            print("Enter your Name here:")
+            print("First Name:")
+            fname = input()
+
+            print("Enter password:")
+            logpassword = input()
+
+            if logpassword == user_authentication(fname):
+                print(f" Welcome {fname}. You have successfully logged in.")
                 print('\n')
-                print(f"Your {account_name} account has been deleted")
-
-            elif short_code == "ex":
-                print('\n')
-                print(f"******Bye {fname}******")
-                print('\n')
-                break
-
-            else:
-                print("I really didn't get that, kindly use the short codes")
-
-
-    elif response == "yes":
-        print("Enter your Name here:")
-        print("First Name:")
-        fname = input()
-
-        print("Enter password:")
-        logpassword = input()
-
-        if logpassword == user_authentication(fname):
-            print(f" Welcome {fname}. You have successfully logged in.")
-            print('\n')
-            print("="*10)
+                print("="*10)
             
 
-        else:
-            print("Invalid user name or password")
+            else:
+                print("Invalid user name or password")
+                print('\n')
         
 
-    else:
-        print(" I didn't get that, kindly reply with 'yes' or 'no'")
+        else:
+            print(" I didn't get that, kindly reply with 'yes' or 'no'")
+            break
 
 if __name__ == "__main__":
     main()
