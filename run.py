@@ -5,35 +5,61 @@ from credentials import Credentials
 from user import User
 
 def user_login(first_name, last_name, login_password):
+    """
+    function to create a new user
+    """
     user = User(first_name, last_name, login_password)
     return user
 
 def save_user_login(user):
+    """function to save a user profile 
+    """
     user.save_user()
 
 def user_authentication(fuser):
+    """
+    function to authenticate a user's username and password
+    """
     return User.find_password_for(fuser)
 
 
 def add_existing_account(password_for, username, password):
+    """
+    function to create an existing account's credentials
+    """
     existing_account = Credentials(password_for, username, password)
     return existing_account
 
 def add_new_account(password_for, username, password):
+    """
+    function to create a new account's credentials
+    """
     new_account = Credentials(password_for, username, password)
     return new_account
 
 def save_account(account):
+    """
+    function to save a created account
+    """
     account.save_account()
 
 def generate_password_for(username):
+    """
+    function to return the password of a given username
+    """
     Credentials.generate_password_for(username)
     pyperclip.paste()
 
 def view_accounts():
+    """
+    function to returns all saved  accounts
+    """
     return Credentials.display_accounts()
 
 def delete_account(password_for):
+    """
+    function to delete the credentials of a given account
+    """
     Credentials.delete_account(password_for)
 
 
