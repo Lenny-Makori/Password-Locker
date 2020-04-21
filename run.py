@@ -40,24 +40,36 @@ def main():
     response = input().lower()
     print('\n')
 
-    if response == 'yes':
-        print("Enter your Name here:")
+    if response == 'no':
+        print("Create your account here:")
         print("First Name:")
         fname = input()
-
-        print("Enter password:")
+        print("Last Name:")
+        lname = input()
+        print("Enter new password:")
         logpassword = input()
+        print("Confirm password:")
+        logpassword2 = input()
 
-        if logpassword == user_authentication(fname):
-            print(f" Welcome {fname}. You have successfully logged in.")
-            print('\n')
-            print("="*10)
-            
+        if logpassword == logpassword2:
+            save_user_login(user_login(fname, lname, logpassword))
+            print(f"{fname}, you have successfully created your Password Locker account has been created! Look around and see what you can do to you account!")
 
         else:
-            print("Invalid user name or password")
+            print("Incorrect password confirmation. Kindly enter your password again")
+            print("Enter new password:")
+            logpassword = input()
+            print("Confirm password:")
+            logpassword2 = input()
+            if logpassword == logpassword2:
+                save_user_login(user_login(fname, lname, logpassword))
+                print('\n')
+                print(f"{fname}, you have successfully created your Password Locker account has been created! Look around and see what you can do to you account!")
+                print('\n')
 
         while True:
+            print('\n')
+            print("="*50)
             print("What would you like to do? Reply with the following short codes. ea - add an existing account, na - add a new account, da - display all accounts, dl - delete an account")
             short_code = input().lower()
 
@@ -124,38 +136,32 @@ def main():
                 print(f"Your {account_name} account has been deleted")
 
             elif short_code == "ex":
+                print('\n')
                 print(f"******Bye {fname}******")
+                print('\n')
                 break
 
             else:
                 print("I really didn't get that, kindly use the short codes")
 
 
-    elif response == "no":
-        print("Create your account here:")
+    elif response == "yes":
+        print("Enter your Name here:")
         print("First Name:")
         fname = input()
-        print("Last Name:")
-        lname = input()
-        print("Enter new password:")
-        logpassword = input()
-        print("Confirm password:")
-        logpassword2 = input()
 
-        if logpassword == logpassword2:
-            save_user_login(user_login(fname, lname, logpassword))
-            print(f"{fname}, you have successfully created your Password Locker account has been created! Look around and see what you can do to you account!")
+        print("Enter password:")
+        logpassword = input()
+
+        if logpassword == user_authentication(fname):
+            print(f" Welcome {fname}. You have successfully logged in.")
+            print('\n')
+            print("="*10)
+            
 
         else:
-            print("Incorrect password confirmation. Kindly enter your password again")
-            print("Enter new password:")
-            logpassword = input()
-            print("Confirm password:")
-            logpassword2 = input()
-            if logpassword == logpassword2:
-                save_user_login(user_login(fname, lname, logpassword))
-                print(f"{fname}, you have successfully created your Password Locker account has been created! Look around and see what you can do to you account!")
-                print('\n')
+            print("Invalid user name or password")
+        
 
     else:
         print(" I didn't get that, kindly reply with 'yes' or 'no'")
