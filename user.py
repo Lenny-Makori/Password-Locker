@@ -5,6 +5,12 @@ class User:
     def save_user(self):
         User.users_list.append(self)
 
+    @classmethod
+    def find_password_for(cls, fname):
+        for user in cls.users_list:
+            if user.user_first_name == fname:
+                return user.login_password
+
     def __init__(self, user_first_name, user_last_name, login_password):
 
         self.user_first_name = user_first_name

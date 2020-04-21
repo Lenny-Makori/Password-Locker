@@ -5,6 +5,9 @@ from user import User
 def user_login(self, first_name, last_name, login_password):
     self.user = User(first_name, last_name, login_password)
 
+def save_user_login(user):
+    user.save_user()
+
 
 def add_existing_account(self, password_for, username, password):
     self.existing_account = Credentials(password_for, username, password)
@@ -25,5 +28,18 @@ def view_accounts():
 def delete_account(password_for):
     Credentials.delete_account(password_for)
 
+
+def main():
+    print("Hello welcome to your password locker. Do you have an account? (reply with 'yes' or 'no')")
+    response = input().lower()
+    print('\n')
+
+    if response == 'yes':
+        print("Enter your Name here:")
+        print("First Name:")
+        lname = input()
+        print("Enter password:")
+        logpassword = input()
+        
 
 

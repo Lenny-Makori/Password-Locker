@@ -32,6 +32,11 @@ class TestAccount(unittest.TestCase):
 
         self.assertEqual(len(User.users_list), 1)
 
+    def test_user_password_by_firstname(self):
+        found_password = User.find_password_for("Lenny")
+
+        self.assertEqual(found_password, self.new_user.login_password)
+
 
     def test_add_existing_account(self):
         self.new_existing_account = Credentials("twitter", "lennymakori1", "makorimakori28")
